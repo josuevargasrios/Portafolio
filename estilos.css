@@ -1,0 +1,308 @@
+/* ==========================================
+   1. CONFIGURACIÓN GENERAL (Fondo Negro Puro)
+   ========================================== */
+body {
+    background-color: #000000; /* Fondo negro absoluto */
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   2. ENCABEZADO (Estilo fiel a tu imagen)
+   ========================================== */
+.header-portfolio {
+    text-align: center;
+    padding: 80px 20px 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.titulo-principal {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 6px; /* Espaciado premium entre letras */
+    margin: 0 0 25px 0;
+    color: #ffffff;
+}
+
+.autobiografia p {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #cccccc; /* Gris suave elegante para lectura */
+    margin: 0;
+    text-align: center;
+}
+
+/* ==========================================
+   3. CUADRÍCULA MAESTRA DE 2x2
+   ========================================== */
+.contenedor-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas exactas */
+    gap: 25px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tarjeta {
+    position: relative;
+    height: 480px;
+    overflow: hidden;
+    border-radius: 6px;
+    text-decoration: none;
+    background-color: #0a0a0a;
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.capa-texto {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.capa-texto h3 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin: 0;
+}
+
+/* ==========================================
+   4. EFECTOS INTERACTIVOS (Hover)
+   ========================================== */
+.tarjeta:hover .capa-texto {
+    opacity: 1;
+}
+
+.tarjeta:hover img {
+    transform: scale(1.05); /* Zoom sutil */
+}
+
+/* ==========================================
+   5. DISEÑO RESPONSIVO (Ajuste Celulares)
+   ========================================== */
+@media (max-width: 768px) {
+    .titulo-principal {
+        font-size: 2rem;
+        letter-spacing: 4px;
+    }
+    
+    .contenedor-grid-2x2 {
+        grid-template-columns: 1fr; /* Una columna en celulares */
+        gap: 15px;
+    }
+    
+    .tarjeta {
+        height: 350px;
+    }
+} outdoors
+
+/* ==========================================
+   6. PIE DE PÁGINA (Ajustado fielmente a la imagen)
+   ========================================== */
+.pie-pagina {
+    text-align: center;
+    padding: 80px 20px 60px 20px; /* Buen espacio al final */
+}
+
+.pie-pagina p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #38434f; /* Color gris oscuro/azulado exacto de tu captura */
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
+}
+
+/* ==========================================
+   7. ESTILOS PARA LAS PÁGINAS INTERNAS (V2)
+   ========================================== */
+
+/* Botón de volver al inicio (Solo Flecha Minimalista) */
+.nav-regresar {
+    padding: 40px 20px 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.enlace-volver {
+    color: #38434f; /* Gris azulado de tu copyright */
+    text-decoration: none;
+    font-size: 1.5rem; /* Flecha más visible */
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.enlace-volver:hover {
+    color: #ffffff;
+    transform: translateX(-5px); /* Pequeño movimiento a la izquierda al pasar el mouse */
+}
+
+/* Título de la categoría (Centrado y Más Grande) */
+.titulo-categoria {
+    font-size: 4.5rem; /* Mucho más grande y dramático */
+    font-weight: 800;
+    letter-spacing: 10px; /* Espaciado extra para elegancia */
+    text-align: center;
+    margin: 20px 0 80px 0;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+/* Contenedor de la galería (Grid de 3 ítems por fila) */
+.galeria-interna {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas exactas */
+    gap: 15px; /* Espacio más estrecho para look editorial */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 80px 20px;
+}
+
+.foto-item {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Opcional: las hace cuadradas para orden perfecto */
+    object-fit: cover;
+    border-radius: 2px;
+    transition: filter 0.4s ease;
+}
+
+.foto-item:hover {
+    filter: brightness(1.2);
+}
+
+/* Ajuste móvil */
+@media (max-width: 900px) {
+    .titulo-categoria { font-size: 2.5rem; letter-spacing: 5px; }
+    .galeria-interna { grid-template-columns: 1fr 1fr; } /* 2 columnas en tablets */
+}
+
+@media (max-width: 600px) {
+    .galeria-interna { grid-template-columns: 1fr; } /* 1 columna en celulares */
+}
+
+/* ==========================================
+   8. EFECTO LIGHTBOX (FOTO A TAMAÑO COMPLETO)
+   ========================================== */
+
+/* Capa de fondo que cubre toda la pantalla */
+.lightbox {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo negro traslúcido */
+    backdrop-filter: blur(10px); /* Aquí ocurre la magia del fondo borroso */
+    z-index: 2000; /* Se asegura de estar por encima de todo */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estado activo: se activa mediante JavaScript */
+.lightbox.activo {
+    display: flex;
+}
+
+/* Contenedor de la imagen ampliada */
+.lightbox-contenido {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    object-fit: contain; /* Evita que la foto se recorte; muestra su tamaño 100% proporcional */
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* Animación sutil de apertura para la foto */
+.lightbox.activo .lightbox-contenido {
+    transform: scale(1);
+}
+
+/* Botón de cierre (Equis / Regreso) */
+.lightbox-cerrar {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #ffffff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.lightbox-cerrar:hover {
+    color: #38434f; /* Mismo gris que usamos en tus botones de regreso */
+    transform: scale(1.1);
+}
+
+/* ==========================================
+   9. BOTONES DE NAVEGACIÓN EN EL LIGHTBOX
+   ========================================== */
+
+/* Estilo general para ambas flechas */
+.lightbox-flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #38434f; /* Tu gris azulado característico */
+    font-size: 3rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    user-select: none; /* Evita que se seleccione el texto al hacer clics rápidos */
+    padding: 20px;
+    z-index: 2100;
+}
+
+.lightbox-flecha:hover {
+    color: #ffffff; /* Brilla en blanco al pasar el mouse */
+}
+
+/* Posición de la flecha izquierda */
+.flecha-izq {
+    left: 20px;
+}
+.flecha-izq:hover {
+    transform: translateY(-50%) scale(1.1) translateX(-5px); /* Efecto dinámico hacia la izquierda */
+}
+
+/* Posición de la flecha derecha */
+.flecha-der {
+    right: 20px;
+}
+.flecha-der:hover {
+    transform: translateY(-50%) scale(1.1) translateX(5px); /* Efecto dinámico hacia la derecha */
+}
+
+/* Ajuste para que en celulares las flechas no estorben sobre la imagen */
+@media (max-width: 768px) {
+    .lightbox-flecha {
+        font-size: 2rem;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.4); /* Fondo sutil para legibilidad en móvil */
+        border-radius: 50%;
+    }
+    .flecha-izq { left: 10px; }
+    .flecha-der { right: 10px; }
+}

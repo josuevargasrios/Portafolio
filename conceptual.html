@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Conceptual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <nav class="nav-regresar">
+        <a href="index.html" class="enlace-volver">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+    </nav>
+
+    <main>
+        <h2 class="titulo-categoria">CONCEPTUAL</h2>
+
+        <div class="galeria-interna">
+            <img src="imagenes/conceptual/conceptual1.jpg" alt="Fotografía Conceptual 1" class="foto-item">
+            <img src="imagenes/conceptual/conceptual2.jpg" alt="Fotografía Conceptual 2" class="foto-item">
+            <img src="imagenes/conceptual/conceptual3.jpg" alt="Fotografía Conceptual 3" class="foto-item">
+            <img src="imagenes/conceptual/conceptual4.jpg" alt="Fotografía Conceptual 4" class="foto-item">
+	    <img src="imagenes/conceptual/conceptual5.jpg" alt="Fotografía Conceptual 5" class="foto-item">
+	    <img src="imagenes/conceptual/conceptual6.jpg" alt="Fotografía Conceptual 6" class="foto-item">
+        </div>
+    </main>
+
+    <footer class="pie-pagina">
+        <p>&copy; 2026 Josué Vargas. Todos los derechos reservados.</p>
+    </footer>
+
+<div class="lightbox" id="miLightbox">
+        <span class="lightbox-cerrar" id="cerrarBtn">&times;</span>
+        
+        <span class="lightbox-flecha flecha-izq" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></span>
+        <span class="lightbox-flecha flecha-der" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></span>
+        
+        <img src="" alt="Imagen ampliada" class="lightbox-contenido" id="imgLightbox">
+    </div>
+
+    <script>
+        const galeria = document.querySelector('.galeria-interna');
+        const lightbox = document.getElementById('miLightbox');
+        const imgLightbox = document.getElementById('imgLightbox');
+        const cerrarBtn = document.getElementById('cerrarBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // Convertimos la lista de imágenes de la cuadrícula en un Arreglo para poder navegar con índices numéricos
+        const imagenesArray = Array.from(document.querySelectorAll('.galeria-interna .foto-item'));
+        let indiceActual = 0;
+
+        // Función para actualizar el contenido del Lightbox según el índice de la foto
+        function mostrarImagen(indice) {
+            const foto = imagenesArray[indice];
+            if (foto) {
+                const rutaImagen = foto.getAttribute('src');
+                const altImagen = foto.getAttribute('alt');
+                imgLightbox.setAttribute('src', rutaImagen);
+                imgLightbox.setAttribute('alt', altImagen);
+                indiceActual = indice;
+            }
+        }
+
+        // Al hacer clic en una foto de la cuadrícula, abre el Lightbox y detecta su posición
+        galeria.addEventListener('click', (e) => {
+            if (e.target.classList.contains('foto-item')) {
+                const index = imagenesArray.indexOf(e.target);
+                mostrarImagen(index);
+                lightbox.classList.add('activo');
+            }
+        });
+
+        // Evento para cambiar a la foto ANTERIOR (Flecha izquierda)
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que se cierre el lightbox al hacer clic en la flecha
+            let nuevoIndice = indiceActual - 1;
+            // Si llega al inicio (0), da la vuelta y salta a la última foto de la lista
+            if (nuevoIndice < 0) {
+                nuevoIndice = imagenesArray.length - 1;
+            }
+            mostrarImagen(nuevoIndice);
+        });
+
+        // Evento para cambiar a la foto SIGUIENTE (Flecha derecha)
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que se cierre el lightbox al hacer clic en la flecha
+            let nuevoIndice = indiceActual + 1;
+            // Si llega al final, da la vuelta y regresa a la primera foto (0)
+            if (nuevoIndice >= imagenesArray.length) {
+                nuevoIndice = 0;
+            }
+            mostrarImagen(nuevoIndice);
+        });
+
+        // Botón cerrar (X)
+        cerrarBtn.addEventListener('click', () => {
+            lightbox.classList.remove('activo');
+        });
+
+        // Cerrar al hacer clic en el fondo borroso vacío
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('activo');
+            }
+        });
+    </script>
+
+
+</body>
+</html>
